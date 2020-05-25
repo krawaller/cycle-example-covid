@@ -61,3 +61,24 @@ Outermost component has entire state (like redux store)
 Adapted for child component via lenses
 
 ![](dots/lens.dot.svg)
+
+### Example app structure
+
+Component tree:
+
+![](dots/examplestruct.dot.svg)
+
+### Example app apologies
+
+For ease of showing code, I have
+
+- many files
+- verbose typings
+- very religious patterns
+
+Real app would be way more succinct
+
+### CycleJS future
+
+- NeoCycle
+- Callbags

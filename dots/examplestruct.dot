@@ -1,0 +1,10 @@
+digraph {
+  rankdir = LR
+  App -> Form
+  App -> GetCountryData
+  App -> Stats
+  Form -> AssignableInput
+  Form -> ConfirmButton
+  AssignableInput [label="Assignable\nInput"]
+  ConfirmButton [label="Confirm\nButton"]
+}

@@ -7,7 +7,7 @@ export const [setError, isSetErrorAction] = basicFactory<{ error: string }>(
 export const [setData, isSetDataAction] = basicFactory<{
   data: FetchedCountryData;
   country: string;
-}>("GETDATA::ERROR");
+}>("GETDATA::DATA");
 
 export type GetCountryDataAction =
   | ReturnType<typeof setError>
