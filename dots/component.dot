@@ -1,0 +1,6 @@
+digraph {
+  bgcolor = white;
+  rankdir = LR;
+  sources -> component -> sinks;
+  component [shape=rectangle];
+}

@@ -1,0 +1,11 @@
+digraph {
+  bgcolor = white;
+  rankdir = LR;
+  subgraph cluster_lens {
+    label="Lens"
+    parentState -> getter -> childState
+    oldParentState -> setter -> newParentState
+    newChildState -> setter
+    getter, setter [shape = rectangle]
+  }
+}

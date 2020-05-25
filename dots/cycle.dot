@@ -1,0 +1,13 @@
+digraph {
+  bgcolor = white;
+  rankdir = LR;
+  drivers [shape=rectangle]
+  app [shape=rectangle]
+  drivers:w -> sources:n;
+  app:e -> sinks:s
+  sinks:n -> drivers:e;
+  sources:s -> app:w;
+  {rank=min; sources;}
+  {rank=same; drivers; app;}
+  {rank=max; sinks}
+}

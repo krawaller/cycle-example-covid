@@ -1,0 +1,23 @@
+digraph {
+  bgcolor = white;
+  rankdir = LR;
+  subgraph cluster_sources {
+    label="sources";
+    DOM
+  }
+  subgraph cluster_component {
+    label="component"
+    state [label="state$"]
+    actions [label="action$"]
+    vnode [label="vnode$"]
+    intent, model, view [shape=rectangle]
+    {rank=same; intent, actions}
+    {rank=same; model, state}
+    {rank=same; view, vnode}
+  }
+  subgraph cluster_sinks {
+    label="sinks"
+    DOM2 [label="DOM"]
+  }
+  DOM -> intent -> actions -> model -> state -> view -> vnode -> DOM2
+}

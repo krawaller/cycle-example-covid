@@ -1,0 +1,8 @@
+digraph {
+  bgcolor = white;
+  rankdir = LR;
+  component [shape=rectangle]
+  state -> component -> reducer
+  state [label="state$"]
+  reducer [label="reducer$"]
+}
