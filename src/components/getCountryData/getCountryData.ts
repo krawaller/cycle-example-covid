@@ -4,17 +4,16 @@ import {
 } from "./getCountryData.types";
 import intent from "./getCountryData.intent";
 import model from "./getCountryData.model";
-import request from "./getCountryData.request";
+import { isInitRequestAction } from "./getCountryData.actions";
 
 export function GetCountryData(
   sources: GetCountryDataSources
 ): GetCountryDataSinks {
   const action$ = intent(sources);
   const state$ = model(action$);
-  const request$ = request(sources);
 
   return {
-    HTTP: request$,
+    HTTP: action$.filter(isInitRequestAction).map((a) => a.payload),
     state: state$.map((s) => () => s),
   };
 }

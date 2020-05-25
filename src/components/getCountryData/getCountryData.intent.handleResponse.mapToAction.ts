@@ -5,7 +5,7 @@ import {
   setData,
 } from "./getCountryData.actions";
 
-export const mapResponse = (res: Response | Error): GetCountryDataAction => {
+export const mapToAction = (res: Response | Error): GetCountryDataAction => {
   if (res instanceof Error) return setError({ error: res.message });
   if (res.error) return setError({ error: res.error.message });
   try {
@@ -22,4 +22,4 @@ export const mapResponse = (res: Response | Error): GetCountryDataAction => {
   }
 };
 
-export default mapResponse;
+export default mapToAction;
