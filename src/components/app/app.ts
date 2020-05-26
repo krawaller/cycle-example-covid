@@ -24,7 +24,7 @@ export function App(sources: AppSources) {
     DOM: vdom$,
     state: reducer$,
     HTTP: getCountryDataSinks.HTTP,
-    log: sources.state.stream,
+    log: sources.state.stream.map((s) => JSON.stringify(s, null, 2)),
   };
 
   return sinks;

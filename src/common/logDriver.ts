@@ -1,11 +1,9 @@
 import { Stream } from "xstream";
 
-export const makeLogDriver = function (prefix) {
-  return function (log$: Stream<any>) {
+export const makeLogDriver = (prefix) => (log$?: Stream<any>) => {
+  if (log$) {
     log$.subscribe({
-      next: function (item) {
-        console.log(prefix, item);
-      },
+      next: (item) => console.log(prefix, item),
     });
-  };
+  }
 };

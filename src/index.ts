@@ -8,6 +8,6 @@ import { App } from "./components/app";
 
 const DOM = makeDOMDriver("#app-container");
 const HTTP = makeHTTPDriver();
-const log = makeLogDriver("COVID");
+const log = makeLogDriver("STATE");
 
 run(withState(App), { DOM, HTTP, log });
