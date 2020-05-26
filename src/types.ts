@@ -16,7 +16,6 @@ export type CountryDataIdleState = { state: "idle"; country?: undefined };
 export type CountryDataLoadingState = {
   state: "loading";
   country: string;
-  force?: boolean;
 };
 export type CountryDataContentState = {
   state: "data";
