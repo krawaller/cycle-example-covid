@@ -6,10 +6,10 @@ import intent from "./stats.intent";
 export function Stats(sources: StatsSources): StatsSinks {
   const vdom$ = view(sources.state.stream);
   const action$ = intent(sources);
-  const newState$ = model(action$, sources.state.stream);
+  const reducer$ = model(action$);
   return {
     DOM: vdom$,
-    state: newState$.map((s) => () => s),
+    state: reducer$,
   };
 }
 

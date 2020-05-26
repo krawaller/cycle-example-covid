@@ -5,7 +5,7 @@ import { FormSources } from "./form.types";
 export function useConfirmButton(sources: FormSources) {
   // The ConfirmButton isn't built to take a StateSource, so
   // instead of defining a Lens we create the needed streams
-  // manually.
+  // directly.
   const disabled$ = sources.state.stream.map((s) => !s.fieldContent);
   const confSources: ConfirmButtonSources = {
     DOM: sources.DOM,
