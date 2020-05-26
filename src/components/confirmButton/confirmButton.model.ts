@@ -1,19 +1,14 @@
 import { Stream } from "xstream";
-import { ConfirmButtonMode } from "./confirmButton.types";
-import {
-  isDisableAction,
-  ConfirmButtonAction,
-  isMaybeAction,
-} from "./confirmButton.actions";
+import { ConfirmButtonMode, ConfirmButtonAction } from "./confirmButton.types";
 
 export function model(
   action$: Stream<ConfirmButtonAction>
 ): Stream<ConfirmButtonMode> {
   return action$.map((action) => {
-    if (isDisableAction(action)) {
+    if (action === "DISABLE") {
       return "disabled";
     }
-    if (isMaybeAction(action)) {
+    if (action === "MAYBE") {
       return "areyousure";
     }
     // CANCEL, CONFIRM and ENABLE all means we go to waiting mode

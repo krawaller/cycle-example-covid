@@ -23,3 +23,11 @@ export type ConfirmButtonMode =
   | "areyousure" // Confirming mode, show confirm and cancel buttons
   | "waiting" // Idle mode, show submit button
   | "disabled"; // Idle but disabled
+
+// Internal action type
+export type ConfirmButtonAction =
+  | "ENABLE"
+  | "DISABLE"
+  | "MAYBE"
+  | "CANCEL"
+  | "CONFIRM";

@@ -1,14 +1,9 @@
 import xs, { Stream } from "xstream";
 import dropRepeats from "xstream/extra/dropRepeats";
-import { ConfirmButtonSources } from "./confirmButton.types";
 import {
-  enable,
-  disable,
-  maybe,
-  cancel,
-  confirm,
+  ConfirmButtonSources,
   ConfirmButtonAction,
-} from "./confirmButton.actions";
+} from "./confirmButton.types";
 
 export function intent(
   sources: ConfirmButtonSources
@@ -16,10 +11,10 @@ export function intent(
   return xs.merge(
     sources.disabled$
       .compose(dropRepeats())
-      .map((disabledBool) => (disabledBool ? disable() : enable())),
-    sources.DOM.select(".maybe").events("click").mapTo(maybe()),
-    sources.DOM.select(".cancel").events("click").mapTo(cancel()),
-    sources.DOM.select(".confirm").events("click").mapTo(confirm())
+      .map((disabledBool) => (disabledBool ? "DISABLE" : "ENABLE")),
+    sources.DOM.select(".maybe").events("click").mapTo("MAYBE"),
+    sources.DOM.select(".cancel").events("click").mapTo("CANCEL"),
+    sources.DOM.select(".confirm").events("click").mapTo("CONFIRM")
   ) as Stream<ConfirmButtonAction>;
 }
 
