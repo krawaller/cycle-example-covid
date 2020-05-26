@@ -1,0 +1,23 @@
+digraph {
+  bgcolor = white;
+  rankdir = LR;
+  subgraph cluster_sources {
+    label="sources";
+    DOM
+    state
+  }
+  subgraph cluster_component {
+    label="component using Cycle State"
+    reducer [label="reducer$"]
+    actions [label="action$"]
+    vnode [label="vnode$"]
+    intent, model, view [shape=rectangle]
+  }
+  subgraph cluster_sinks {
+    label="sinks"
+    DOM2 [label="DOM"]
+    state2 [label="state"]
+  }
+  DOM -> intent -> actions -> model -> reducer -> state2
+  state -> view -> vnode -> DOM2
+}

@@ -73,6 +73,14 @@ Adapted for child component via lenses
 
 ![](dots/lens.dot.svg)
 
+### MVI pattern with Cycle State
+
+![](dots/mvi-state.dot.svg)
+
+### Composite Component
+
+![](dots/mvi-state-child.dot.svg)
+
 ### Example app structure
 
 Component tree:
