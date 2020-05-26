@@ -33,14 +33,25 @@ Also
 
 ![](dots/cycle.dot.svg)
 
-But `app` will likely have inner components too.
+- **Components**: Your programs! Pure functions.
+- **Drivers**: Where side effects happen
+- **Sources**: Obj of streams, input to components
+- **Sinks**: Obj of streams, output from components
+
+### Drivers
+
+Each **driver** operatoes on a key in the sources/sinks.
+
+And important example is the **DOM driver**:
+
+- `sources.DOM` lets you catch events
+- `sinks.DOM` is a stream of vnodes (to be rendered)
 
 ### CycleJS Components
 
 ![](dots/component.dot.svg)
 
-- `sources` is an object with streams (and sometimes other things)
-- `sinks` is an object with streams
+Components are composable
 
 ### The MVI pattern
 
