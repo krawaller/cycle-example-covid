@@ -1,6 +1,6 @@
 import { GetCountryDataState } from "./getCountryData.types";
 import { Reducer } from "@cycle/state";
-import { FetchedCountryData, CountryDataLoadingState } from "../../common";
+import { FetchedCountryData, CountryDataLoadingState } from "../../types";
 
 export const setError = (error: string): Reducer<GetCountryDataState> => (
   oldState

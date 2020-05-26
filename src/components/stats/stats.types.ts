@@ -2,7 +2,7 @@ import { Stream } from "xstream";
 import { StateSource, Reducer } from "@cycle/state";
 import { VNode, MainDOMSource } from "@cycle/dom";
 
-import { CountryDataState } from "../../common";
+import { CountryDataState } from "../../types";
 
 export type StatsState = CountryDataState;
 

@@ -1,7 +1,7 @@
 import dropRepeats from "xstream/extra/dropRepeats";
 import { GetCountryDataSources } from "./getCountryData.types";
 import { Stream } from "xstream";
-import { isLoadingState } from "../../common";
+import { isLoadingState } from "../../types";
 import { RequestInput } from "@cycle/http";
 
 export function request(sources: GetCountryDataSources): Stream<RequestInput> {

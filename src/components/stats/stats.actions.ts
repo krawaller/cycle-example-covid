@@ -1,6 +1,6 @@
 import { StatsState } from "./stats.types";
 import { Reducer } from "@cycle/state";
-import { CountryDataContentState } from "../../common";
+import { CountryDataContentState } from "../../types";
 
 export const reload = (): Reducer<StatsState> => (oldState) => ({
   country: (oldState as CountryDataContentState).country,

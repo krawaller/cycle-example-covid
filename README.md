@@ -16,7 +16,7 @@ You've probably seen [this gist](https://gist.github.com/staltz/868e7e9bc2a7b8c1
 
 ![](./pics/dog.jpeg)
 
-This framework takes the dog literally.
+This framework takes the dog **VERY** literally.
 
 ## CycleJS
 

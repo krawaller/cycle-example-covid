@@ -2,7 +2,7 @@ import { div, h1, span, VNode } from "@cycle/dom";
 import { formatDistanceToNow } from "date-fns";
 
 import { StatsState } from "./stats.types";
-import { isErrorState, isContentState, isLoadingState } from "../../common";
+import { isErrorState, isContentState, isLoadingState } from "../../types";
 import { Stream } from "xstream";
 
 const box = (label: string, count: number) =>

@@ -3,12 +3,13 @@ import { StateSource, Reducer } from "@cycle/state";
 import { HTTPSource, RequestInput } from "@cycle/http";
 import { Stream } from "xstream";
 
-import { CountryDataState } from "../../common/types";
+import { CountryDataState } from "../../types";
 
 export type AppSources = {
   DOM: MainDOMSource;
   HTTP: HTTPSource;
   state: StateSource<AppState>;
+  store: Stream<AppState>;
 };
 
 export type AppSinks = {
@@ -16,6 +17,7 @@ export type AppSinks = {
   state: Stream<Reducer<AppState>>;
   HTTP: Stream<RequestInput>;
   log: Stream<any>;
+  store: Stream<AppState>;
 };
 
 export type AppState = {
