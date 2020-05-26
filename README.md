@@ -59,6 +59,8 @@ Internally a component will commonly use the [Model View Intent pattern](https:/
 
 ![](dots/mvi.dot.svg)
 
+The `ConfirmButton` component in example adheres to this.
+
 ### Fractal state approach
 
 [Cycle State API](https://cycle.js.org/api/state.html)
@@ -76,6 +78,8 @@ Adapted for child component via lenses
 ### MVI pattern with Cycle State
 
 ![](dots/mvi-state.dot.svg)
+
+Most example components look like this.
 
 ### Composite Component
 
