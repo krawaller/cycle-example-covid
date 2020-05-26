@@ -8,9 +8,14 @@ import { Stream } from "xstream";
 const box = (label: string, count: number) =>
   div(".statistic", [div(".number", [count]), div(".description", [label])]);
 
+const btns = div(".clearBtnContainer", [
+  span(".clearBtn", ["🙈"]),
+  span(".reloadBtn", ["🔄"]),
+]);
+
 export function view(state$: Stream<StatsState>): Stream<VNode> {
   return state$.map((state) => {
-    if (isErrorState(state)) return div(".ago", [state.error]);
+    if (isErrorState(state)) return div([h1(".title", [state.error]), btns]);
     if (isLoadingState(state)) return h1(".title", ["..."]);
     if (isContentState(state))
       return div([
@@ -26,10 +31,7 @@ export function view(state$: Stream<StatsState>): Stream<VNode> {
           box("Recovered", state.data.Recovered),
           box("Active", state.data.Active),
         ]),
-        div(".clearBtnContainer", [
-          span(".clearBtn", ["🙈"]),
-          span(".reloadBtn", ["🔄"]),
-        ]),
+        btns,
       ]);
     return div();
   });

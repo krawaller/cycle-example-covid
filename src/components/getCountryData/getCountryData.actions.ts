@@ -5,7 +5,7 @@ import { FetchedCountryData, CountryDataLoadingState } from "../../types";
 export const setError = (error: string): Reducer<GetCountryDataState> => (
   oldState
 ) => ({
-  error,
+  error: error.replace("COUNTRY", oldState!.country!),
   state: "error",
   country: oldState!.country!,
 });

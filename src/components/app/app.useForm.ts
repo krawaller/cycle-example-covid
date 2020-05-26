@@ -13,8 +13,12 @@ const formLens: Lens<AppState, FormState> = {
   }),
   set: (oldParentState: AppState, newChildState: FormState) =>
     produce(oldParentState, (draft) => {
+      console.log("NEWFORM", newChildState);
       draft.ui.fieldContent = newChildState.fieldContent;
-      if (draft.data.country != newChildState.submittedName) {
+      if (
+        newChildState.submittedName &&
+        draft.data.country != newChildState.submittedName
+      ) {
         draft.data = {
           state: "loading",
           country: newChildState.submittedName,
