@@ -1,17 +1,13 @@
 import { MainDOMSource, VNode } from "@cycle/dom";
-import { StateSource } from "@cycle/state";
 import { Stream } from "xstream";
 
-// We don't actually use this as internal state - instead it is just a signal
-// from the outside telling us when to switch from disabled/enabled.
-// Our internal state is instead the ConfirmButtonMode type below.
-export type ConfirmButtonState = {
-  disabled: boolean;
-};
+// Just for giggles, this component is not built with Cycle State in mind.
+// It just defines what it needs directly in the source (a disabled$), and
+// has its own internal state type (the ConfirmButtonMode type below)
 
 export type ConfirmButtonSources = {
   DOM: MainDOMSource;
-  state: StateSource<ConfirmButtonState>;
+  disabled$: Stream<boolean>;
 };
 
 // Since the Confirmbutton only uses the input state as a signal,
