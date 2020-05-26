@@ -9,14 +9,13 @@ import { Stream } from "xstream";
 const formLens: Lens<AppState, FormState> = {
   get: (state: AppState) => ({
     fieldContent: state.ui.fieldContent,
-    submittedName: state.data.submittedName,
+    submittedName: state.data.country || "",
   }),
   set: (oldParentState: AppState, newChildState: FormState) =>
     produce(oldParentState, (draft) => {
       draft.ui.fieldContent = newChildState.fieldContent;
-      if (draft.data.submittedName !== newChildState.submittedName) {
-        draft.data.submittedName = newChildState.submittedName;
-        draft.data.countryData = {
+      if (draft.data.country != newChildState.submittedName) {
+        draft.data = {
           state: "loading",
           country: newChildState.submittedName,
         };

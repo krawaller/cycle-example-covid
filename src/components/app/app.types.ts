@@ -21,10 +21,7 @@ export type AppSinks = {
 };
 
 export type AppState = {
-  data: {
-    submittedName: string;
-    countryData: CountryDataState;
-  };
+  data: CountryDataState;
   ui: {
     fieldContent: string;
   };

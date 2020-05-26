@@ -7,6 +7,7 @@ export const setError = (error: string): Reducer<GetCountryDataState> => (
 ) => ({
   error,
   state: "error",
+  country: oldState!.country!,
 });
 
 export const setData = (

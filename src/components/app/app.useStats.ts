@@ -7,10 +7,10 @@ import { Stats, StatsState } from "../stats";
 import { Stream } from "xstream";
 
 const statsLens: Lens<AppState, StatsState> = {
-  get: (state: AppState) => state.data.countryData,
+  get: (state: AppState) => state.data,
   set: (oldParentState: AppState, newChildState: StatsState) =>
     produce(oldParentState, (draft) => {
-      draft.data.countryData = newChildState;
+      draft.data = newChildState;
     }),
 };
 

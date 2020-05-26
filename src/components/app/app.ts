@@ -7,7 +7,7 @@ import view from "./app.view";
 
 const initialState: AppState = {
   ui: { fieldContent: "" },
-  data: { submittedName: "", countryData: { state: "idle" } },
+  data: { state: "idle" },
 };
 
 export function App(sources: AppSources) {

@@ -7,8 +7,12 @@ export type FetchedCountryData = {
   Date: string;
 };
 
-export type CountryDataErrorState = { state: "error"; error: string };
-export type CountryDataIdleState = { state: "idle" };
+export type CountryDataErrorState = {
+  state: "error";
+  error: string;
+  country: string;
+};
+export type CountryDataIdleState = { state: "idle"; country?: undefined };
 export type CountryDataLoadingState = {
   state: "loading";
   country: string;
