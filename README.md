@@ -12,13 +12,15 @@ Published live at [https://malmojs-cycle.netlify.app/](https://malmojs-cycle.net
 
 ## Reactive programming
 
-You've probably seen [this gist](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)!
+You've probably seen [this gist](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) by André Staltz!
 
 ![](./pics/dog.jpeg)
 
-This framework takes the dog **VERY** literally.
+His framework takes the dog **VERY** literally.
 
 ## CycleJS
+
+![](./pics/cycle-logo.png)
 
 Been around for quite a while!
 
@@ -28,6 +30,14 @@ Also
 
 - [Official page](https://cycle.js.org/)
 - [Egghead course](https://egghead.io/series/cycle-js-fundamentals)
+
+### Totally stream based
+
+Uses [xstream](http://staltz.github.io/xstream/) internally (for now)
+
+![](./pics/xstream.png)
+
+...but there are adapters for RXJS, etc
 
 ### CycleJS basic flow
 
@@ -40,12 +50,19 @@ Also
 
 ### Drivers
 
-Each **driver** operatoes on a key in the sources/sinks.
+Each **driver** operates on a key in the sources/sinks.
 
-And important example is the **DOM driver**:
+An important example is the **DOM driver**:
 
 - `sources.DOM` lets you catch events
 - `sinks.DOM` is a stream of vnodes (to be rendered)
+
+### Homemade drivers
+
+The example app has two home-made drivers:
+
+- `logDriver` logs every new state emission
+- `localStorageDriver` saves/loads to LS
 
 ### CycleJS Components
 
