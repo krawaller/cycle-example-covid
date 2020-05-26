@@ -12,7 +12,7 @@ export function intent(
   const field$ = sources.state.stream.map((s) => s.fieldContent);
   return confirmButtonClick$
     .compose(sampleCombine(field$))
-    .map(([_, v]) => submit(v));
+    .map(([confirmSignal, fieldContent]) => submit(fieldContent));
 }
 
 export default intent;

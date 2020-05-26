@@ -9,19 +9,19 @@ import { Stream } from "xstream";
 const formLens: Lens<AppState, FormState> = {
   get: (state: AppState) => ({
     fieldContent: state.ui.fieldContent,
-    submittedName: state.data.country || "",
+    submission: state.data.country || "",
+    placeholder: "Enter country slug",
   }),
   set: (oldParentState: AppState, newChildState: FormState) =>
     produce(oldParentState, (draft) => {
-      console.log("NEWFORM", newChildState);
       draft.ui.fieldContent = newChildState.fieldContent;
       if (
-        newChildState.submittedName &&
-        draft.data.country != newChildState.submittedName
+        newChildState.submission &&
+        draft.data.country != newChildState.submission
       ) {
         draft.data = {
           state: "loading",
-          country: newChildState.submittedName,
+          country: newChildState.submission,
         };
       }
     }),

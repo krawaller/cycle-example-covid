@@ -8,7 +8,7 @@ import { AssignableInput, AssignableInputState } from "../assignableInput";
 const assignableInputLens: Lens<FormState, AssignableInputState> = {
   get: (s: FormState) => ({
     field: s.fieldContent,
-    placeholder: "Enter country",
+    placeholder: s.placeholder,
   }),
   set: (oldFormState, newInputState) => ({
     ...oldFormState!,

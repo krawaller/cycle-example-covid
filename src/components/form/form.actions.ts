@@ -2,6 +2,7 @@ import { FormState } from "./form.types";
 import { Reducer } from "@cycle/state";
 
 export const submit = (txt: string): Reducer<FormState> => (oldState) => ({
-  fieldContent: "",
-  submittedName: txt,
+  fieldContent: "", // clear field when we submit
+  submission: txt,
+  placeholder: oldState!.placeholder,
 });

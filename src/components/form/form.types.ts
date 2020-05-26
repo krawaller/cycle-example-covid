@@ -4,7 +4,8 @@ import { StateSource, Reducer } from "@cycle/state";
 
 export type FormState = {
   fieldContent: string;
-  submittedName: string;
+  submission: string;
+  placeholder: string;
 };
 
 export type FormSources = { DOM: MainDOMSource; state: StateSource<FormState> };
