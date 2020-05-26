@@ -10,6 +10,16 @@ Source code in this repo
 
 Published live at [https://malmojs-cycle.netlify.app/](https://malmojs-cycle.netlify.app/)
 
+### Example app apologies
+
+For ease of showing code, I have
+
+- many files
+- verbose typings
+- very religious patterns
+
+Real app would be way more succinct
+
 ## Reactive programming
 
 You've probably seen [this gist](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) by André Staltz!
@@ -70,6 +80,12 @@ The example app has two home-made drivers:
 
 Components are composable
 
+### Example app structure
+
+Component tree:
+
+![](dots/examplestruct.dot.svg)
+
 ### The MVI pattern
 
 Internally a component will commonly use the [Model View Intent pattern](https://cycle.js.org/model-view-intent.html)
@@ -101,22 +117,6 @@ Most example components look like this.
 ### Composite Component
 
 ![](dots/mvi-state-child.dot.svg)
-
-### Example app structure
-
-Component tree:
-
-![](dots/examplestruct.dot.svg)
-
-### Example app apologies
-
-For ease of showing code, I have
-
-- many files
-- verbose typings
-- very religious patterns
-
-Real app would be way more succinct
 
 ### CycleJS future
 
