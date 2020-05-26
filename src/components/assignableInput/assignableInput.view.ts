@@ -7,7 +7,7 @@ export default function view(state$: Stream<AssignableInputState>) {
     span(".fieldContainer", [
       input(".field", {
         attrs: { type: "text" },
-        props: { value: state, placeholder: "Enter country here" },
+        props: { value: state.field, placeholder: state.placeholder },
       }),
       span(".fieldClearBtn", ["🗑️"]),
     ])

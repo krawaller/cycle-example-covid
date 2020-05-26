@@ -12,8 +12,15 @@ export function model(
   action$: Stream<AssignableInputAction>
 ): Stream<Reducer<AssignableInputState>> {
   return xs.merge(
-    action$.filter(isClearFieldAction).mapTo(() => ""),
-    action$.filter(isTypeStuffAction).map((action) => () => action.payload)
+    action$
+      .filter(isClearFieldAction)
+      .mapTo((old: AssignableInputState) => ({ ...old, field: "" })),
+    action$
+      .filter(isTypeStuffAction)
+      .map((action) => (old: AssignableInputState) => ({
+        ...old,
+        field: action.payload,
+      }))
   );
 }
 

@@ -6,10 +6,13 @@ import { FormSources, FormState } from "./form.types";
 import { AssignableInput, AssignableInputState } from "../assignableInput";
 
 const assignableInputLens: Lens<FormState, AssignableInputState> = {
-  get: (s: FormState) => s.fieldContent,
+  get: (s: FormState) => ({
+    field: s.fieldContent,
+    placeholder: "Enter country",
+  }),
   set: (oldFormState, newInputState) => ({
     ...oldFormState!,
-    fieldContent: newInputState || "",
+    fieldContent: newInputState!.field || "",
   }),
 };
 
