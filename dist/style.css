@@ -80,3 +80,13 @@ button {
   cursor: pointer;
   margin: 6px;
 }
+
+.fieldContainer {
+  position: relative;
+}
+
+.fieldClearBtn {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}

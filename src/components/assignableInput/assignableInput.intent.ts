@@ -1,20 +1,27 @@
+import xs, { Stream } from "xstream";
+import { AssignableInputSources } from "./assignableInput.types";
 import {
-  AssignableInputSources,
+  typeStuff,
+  clearField,
   AssignableInputAction,
-} from "./assignableInput.types";
-import { Stream } from "xstream";
+} from "./assignableInput.actions";
 
 export function intent(
   sources: AssignableInputSources
 ): Stream<AssignableInputAction> {
-  return sources.DOM.select(".field")
-    .events("input")
-    .filter((e) =>
-      Boolean(
-        e.target && typeof (e.target as HTMLInputElement).value === "string"
+  return xs.merge(
+    // typing in field
+    sources.DOM.select(".field")
+      .events("input")
+      .filter((e) =>
+        Boolean(
+          e.target && typeof (e.target as HTMLInputElement).value === "string"
+        )
       )
-    )
-    .map((e: Event) => (e.target as HTMLInputElement).value);
+      .map((e: Event) => typeStuff((e.target as HTMLInputElement).value)),
+    // clear field content
+    sources.DOM.select(".fieldClearBtn").events("click").mapTo(clearField())
+  );
 }
 
 export default intent;

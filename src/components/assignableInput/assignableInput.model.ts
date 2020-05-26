@@ -1,17 +1,19 @@
 import xs, { Stream } from "xstream";
 
 import {
-  AssignableInputSources,
   AssignableInputAction,
-} from "./assignableInput.types";
+  isClearFieldAction,
+  isTypeStuffAction,
+} from "./assignableInput.actions";
+import { Reducer } from "@cycle/state";
+import { AssignableInputState } from "./assignableInput.types";
 
 export function model(
-  sources: AssignableInputSources,
   action$: Stream<AssignableInputAction>
-) {
+): Stream<Reducer<AssignableInputState>> {
   return xs.merge(
-    action$, // stream of stuff typed by the user
-    sources.state.stream // stream of assignments from parent
+    action$.filter(isClearFieldAction).mapTo(() => ""),
+    action$.filter(isTypeStuffAction).map((action) => () => action.payload)
   );
 }
 
