@@ -15,6 +15,7 @@ export type AppSinks = {
   DOM: Stream<VNode>;
   state: Stream<Reducer<AppState>>;
   HTTP: Stream<RequestInput>;
+  log: Stream<any>;
 };
 
 export type AppState = {

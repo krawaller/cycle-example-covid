@@ -11,6 +11,9 @@ export function App(sources: AppSources) {
   const getCountryDataSinks = useGetCountryData(sources);
 
   const vdom$ = view(formSinks.DOM, statsSinks.DOM);
+  const reducer$ = xs
+    .merge(formSinks.state, getCountryDataSinks.state, statsSinks.state)
+    .startWith(() => initialState);
 
   const initialState: AppState = {
     ui: { fieldContent: "" },
@@ -19,10 +22,9 @@ export function App(sources: AppSources) {
 
   const sinks: AppSinks = {
     DOM: vdom$,
-    state: xs
-      .merge(formSinks.state, getCountryDataSinks.state, statsSinks.state)
-      .startWith(() => initialState),
+    state: reducer$,
     HTTP: getCountryDataSinks.HTTP,
+    log: sources.state.stream,
   };
 
   return sinks;
