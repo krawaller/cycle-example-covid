@@ -3,17 +3,16 @@ import {
   GetCountryDataSources,
 } from "./getCountryData.types";
 import intent from "./getCountryData.intent";
-import model from "./getCountryData.model";
-import { isInitRequestAction } from "./getCountryData.actions";
+import request from "./getCountryData.request";
 
 export function GetCountryData(
   sources: GetCountryDataSources
 ): GetCountryDataSinks {
-  const action$ = intent(sources);
-  const reducer$ = model(action$);
+  const reducer$ = intent(sources);
+  const request$ = request(sources);
 
   return {
-    HTTP: action$.filter(isInitRequestAction).map((a) => a.payload),
+    HTTP: request$,
     state: reducer$,
   };
 }

@@ -1,14 +1,14 @@
 import xs, { Stream } from "xstream";
-import { AssignableInputSources } from "./assignableInput.types";
 import {
-  typeStuff,
-  clearField,
-  AssignableInputAction,
-} from "./assignableInput.actions";
+  AssignableInputSources,
+  AssignableInputState,
+} from "./assignableInput.types";
+import { typeStuff, clearField } from "./assignableInput.actions";
+import { Reducer } from "@cycle/state";
 
 export function intent(
   sources: AssignableInputSources
-): Stream<AssignableInputAction> {
+): Stream<Reducer<AssignableInputState>> {
   return xs.merge(
     // typing in field
     sources.DOM.select(".field")

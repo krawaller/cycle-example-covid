@@ -7,8 +7,6 @@ export type FormState = {
   submittedName: string;
 };
 
-export type FormAction = string; // A submitted name
-
 export type FormSources = { DOM: MainDOMSource; state: StateSource<FormState> };
 
 export type FormSinks = {

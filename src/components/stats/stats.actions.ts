@@ -1,6 +1,13 @@
-import { basicFactory } from "../../common";
+import { StatsState } from "./stats.types";
+import { Reducer } from "@cycle/state";
+import { CountryDataContentState } from "../../common";
 
-export const [reload, isReloadAction] = basicFactory("STATS::RELOAD");
-export const [clear, isClearAction] = basicFactory("STATS::CLEAR");
+export const reload = (): Reducer<StatsState> => (oldState) => ({
+  country: (oldState as CountryDataContentState).country,
+  state: "loading",
+  force: true,
+});
 
-export type StatsAction = ReturnType<typeof reload> | ReturnType<typeof clear>;
+export const clear = (): Reducer<StatsState> => (oldState) => ({
+  state: "idle",
+});

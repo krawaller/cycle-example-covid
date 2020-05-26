@@ -1,13 +1,14 @@
-import { basicFactory } from "../../common";
+import { AssignableInputState } from "./assignableInput.types";
+import { Reducer } from "@cycle/state";
 
-export const [typeStuff, isTypeStuffAction] = basicFactory<string>(
-  "ASSIGNABLEINPUT::TYPE"
-);
+export const typeStuff = (txt: string): Reducer<AssignableInputState> => (
+  oldState
+) => ({
+  ...oldState!,
+  field: txt,
+});
 
-export const [clearField, isClearFieldAction] = basicFactory(
-  "ASSIGNABLEINPUT::CLEAR"
-);
-
-export type AssignableInputAction =
-  | ReturnType<typeof typeStuff>
-  | ReturnType<typeof clearField>;
+export const clearField = (): Reducer<AssignableInputState> => (oldState) => ({
+  ...oldState!,
+  field: "",
+});

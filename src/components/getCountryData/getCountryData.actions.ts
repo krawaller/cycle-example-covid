@@ -1,20 +1,18 @@
-import { basicFactory, FetchedCountryData } from "../../common";
-import { RequestInput } from "@cycle/http";
+import { GetCountryDataState } from "./getCountryData.types";
+import { Reducer } from "@cycle/state";
+import { FetchedCountryData, CountryDataLoadingState } from "../../common";
 
-export const [setError, isSetErrorAction] = basicFactory<{ error: string }>(
-  "GETDATA::ERROR"
-);
+export const setError = (error: string): Reducer<GetCountryDataState> => (
+  oldState
+) => ({
+  error,
+  state: "error",
+});
 
-export const [setData, isSetDataAction] = basicFactory<{
-  data: FetchedCountryData;
-  country: string;
-}>("GETDATA::DATA");
-
-export const [initRequest, isInitRequestAction] = basicFactory<RequestInput>(
-  "GETDATA::REQUEST"
-);
-
-export type GetCountryDataAction =
-  | ReturnType<typeof setError>
-  | ReturnType<typeof setData>
-  | ReturnType<typeof initRequest>;
+export const setData = (
+  data: FetchedCountryData
+): Reducer<GetCountryDataState> => (oldState) => ({
+  country: (oldState as CountryDataLoadingState).country,
+  data,
+  state: "data",
+});

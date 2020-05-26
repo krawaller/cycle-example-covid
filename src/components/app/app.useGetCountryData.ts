@@ -2,12 +2,12 @@ import produce from "immer";
 import { Lens, Reducer } from "@cycle/state";
 import isolate from "@cycle/isolate";
 
-import { GetCountryData, GetCountryDataInputState } from "../getCountryData";
+import { GetCountryData, GetCountryDataState } from "../getCountryData";
 
 import { AppState, AppSources } from "./app.types";
 import { Stream } from "xstream";
 
-const getCountryDataLens: Lens<AppState, GetCountryDataInputState> = {
+const getCountryDataLens: Lens<AppState, GetCountryDataState> = {
   get: (state: AppState) => state.data.countryData,
   set: (oldParentState: AppState, newChildState) =>
     produce(oldParentState, (draft) => {
