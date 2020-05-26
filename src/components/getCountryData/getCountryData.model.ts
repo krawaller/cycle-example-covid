@@ -5,17 +5,18 @@ import {
   isSetDataAction,
   isSetErrorAction,
 } from "./getCountryData.actions";
+import { Reducer } from "@cycle/state";
 
 export function model(
   action$: Stream<GetCountryDataAction>
-): Stream<GetCountryDataInputState> {
+): Stream<Reducer<GetCountryDataInputState>> {
   return xs.merge(
-    action$.filter(isSetDataAction).map((action) => ({
+    action$.filter(isSetDataAction).map((action) => () => ({
       state: "data",
       data: action.payload.data,
       country: action.payload.country,
     })),
-    action$.filter(isSetErrorAction).map((action) => ({
+    action$.filter(isSetErrorAction).map((action) => () => ({
       state: "error",
       error: action.payload.error,
     }))

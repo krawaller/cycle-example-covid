@@ -10,11 +10,11 @@ export function GetCountryData(
   sources: GetCountryDataSources
 ): GetCountryDataSinks {
   const action$ = intent(sources);
-  const state$ = model(action$);
+  const reducer$ = model(action$);
 
   return {
     HTTP: action$.filter(isInitRequestAction).map((a) => a.payload),
-    state: state$.map((s) => () => s),
+    state: reducer$,
   };
 }
 
